@@ -23,7 +23,9 @@ return (
             </th>
         </tr>
         {myStatementData.map(el => {
+
             const tableDate = new Date(el.date).getDate() + '.' + formatMonth(new Date(el.date).getMonth() + 1) + '.' + new Date(el.date).getFullYear();
+
             const tableTime = str =>{
                 let i = 0;
                 while(i < str.length) {
@@ -32,6 +34,7 @@ return (
                 }
                 return str.substring(i+1,str.length);
             }
+
             return (
                 <tr>
                     {showDate && <td>

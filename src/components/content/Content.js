@@ -1,7 +1,7 @@
 import React from 'react';
 import {Table} from "./table/Table";
 
-export function Content(array) {
+export function Content() {
 
     const [showDate, setShowDate] = React.useState(true);
     const [showType, setShowType] = React.useState(true);
