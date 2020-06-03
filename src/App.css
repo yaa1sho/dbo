@@ -21,10 +21,10 @@ tr .red {
 }
 
 .App-label-container {
-  width: 250px;
-  border: 1px solid red;
+  width: 25px;
+  border: 1px solid #614c4c;
   text-align: center;
-  line-height: 50px;
+  line-height: 25px;
 }
 
 .App-logo {
