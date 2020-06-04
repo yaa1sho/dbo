@@ -5,7 +5,8 @@ import {Header} from "../../header/Header";
 export function Table([showDate,showType]) {
     const formatMonth = (month) => month < 10 ? '0' + month : month;
 return (
-    <table>
+    <>
+    <table className="Table-header">
         <tr>
             {showDate && <th>
                 Дата
@@ -23,8 +24,9 @@ return (
                 Расход
             </th>
         </tr>
-    </table> , //не понимаю как разбить на две таблице , так чтобы они обе отображались
-        <table className="test">
+    </table>
+    <div className="For-base-table">
+        <table className="Table-base">
 
         {myStatementData.map(el => {
 
@@ -59,6 +61,8 @@ return (
                 </tr>
             )
         })}
-        </table>
+         </table>
+    </div>
+    </>
 );
 }

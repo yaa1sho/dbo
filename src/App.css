@@ -11,20 +11,20 @@
   line-height: 25px;
 }
 
-.App-content::-webkit-scrollbar-track
+.For-base-table::-webkit-scrollbar-track
 {
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   border-radius: 5px;
   background-color: #F5F5F5;
 }
 
-.App-content::-webkit-scrollbar
+.For-base-table::-webkit-scrollbar
 {
   width: 8px;
   background-color: #F5F5F5;
 }
 
-.App-content::-webkit-scrollbar-thumb
+.For-base-table::-webkit-scrollbar-thumb
 {
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
@@ -35,21 +35,29 @@
   margin: 0 auto 45px;
 }
 
-.test{
-  overflow: auto;
+.Table-header{
+  max-width: 100%;
+  width: 85%;
+  text-align: center;
 }
 
-
-table {
+.Table-header, .Table-base {
   font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif, Serif;
   font-size: 15px;
   background: white;
+  border-collapse: collapse;
+}
+
+.Table-base{
   max-width: 70%;
   width: 70%;
-  border-collapse: collapse;
   text-align: left;
-  overflow-y : auto;
 }
+.For-base-table{
+  height: 400px;
+  overflow-y: auto;
+}
+
 th{
   font-weight: normal;
   color: #039;
