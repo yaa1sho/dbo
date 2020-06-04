@@ -18,6 +18,7 @@ export function Content() {
             <input type="checkbox" onChange ={onChangeDate} title={'Показать дату'} checked={showDate}/>
             <input type="checkbox" onChange ={onChangeType} title={'Показать тип'} checked={showType}/>
             {Table([showDate,showType])}
+
         </div>
     );
 }

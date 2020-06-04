@@ -1,5 +1,6 @@
 import React from "react";
 import {myStatementData} from '../../../my-statement-data';
+import {Header} from "../../header/Header";
 
 export function Table([showDate,showType]) {
     const formatMonth = (month) => month < 10 ? '0' + month : month;
@@ -22,6 +23,9 @@ return (
                 Расход
             </th>
         </tr>
+    </table> , //не понимаю как разбить на две таблице , так чтобы они обе отображались
+        <table className="test">
+
         {myStatementData.map(el => {
 
             const tableDate = new Date(el.date).getDate() + '.' + formatMonth(new Date(el.date).getMonth() + 1) + '.' + new Date(el.date).getFullYear();
@@ -55,5 +59,6 @@ return (
                 </tr>
             )
         })}
-    </table> );
+        </table>
+);
 }
