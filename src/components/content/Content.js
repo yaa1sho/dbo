@@ -1,23 +1,61 @@
 import React from 'react';
 import {Table} from "./table/Table";
+import {myStatementData} from "../../my-statement-data";
+
 
 export function Content() {
 
     const [showDate, setShowDate] = React.useState(true);
     const [showType, setShowType] = React.useState(true);
+    const [showTime, setShowTime] = React.useState(true);
+    const [showIncome, setShowIncome] = React.useState(true);
+    const [showExpenditure, setShowExpenditure] = React.useState(true);
 
     const onChangeDate = e => {
         setShowDate(e.target.checked);
     };
     const onChangeType = e => {
         setShowType(e.target.checked);
-    }
+    };
+    const onChangeTime = e => {
+        setShowTime(e.target.checked);
+    };
+    const onChangeIncome = e => {
+        setShowIncome(e.target.checked);
+    };
+    const onChangeExpenditure = e => {
+        setShowExpenditure(e.target.checked);
+    };
+
+
 
     return (
         <div className="App-content">
-            <input type="checkbox" onChange ={onChangeDate} title={'Показать дату'} checked={showDate}/>
-            <input type="checkbox" onChange ={onChangeType} title={'Показать тип'} checked={showType}/>
-            {Table([showDate,showType])}
+            <div className="checkbox">
+
+                <input type="checkbox"
+                       onChange ={onChangeDate} title={'Показать дату'} checked={showDate} />
+                <label htmlFor="checkbox__text">Дата</label>
+
+                <input type="checkbox"
+                       onChange ={onChangeTime} title={'Показать время'} checked={showTime}/>
+                <label htmlFor="checkbox__text">Время</label>
+
+                <input type="checkbox"
+                       onChange ={onChangeType} title={'Показать тип'} checked={showType}/>
+                <label htmlFor="checkbox__text">Тип</label>
+
+                <input type="checkbox"
+                       onChange ={onChangeIncome} title={'Показать доход'} checked={showIncome}/>
+                <label htmlFor="checkbox__text">Доход</label>
+
+                <input type="checkbox"
+                       onChange ={onChangeExpenditure} title={'Показать тип'} checked={showExpenditure}/>
+                <label htmlFor="checkbox__text">Расход</label>
+
+            </div>
+
+            {Table([showDate,showTime,showType,showIncome,showExpenditure])}
 
         </div>
     );

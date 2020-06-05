@@ -62,7 +62,7 @@ th{
   font-weight: normal;
   color: #039;
   border-bottom: 2px solid #6678b1;
-  padding: 10px 12px;
+  padding: 4px 14px;
 }
 td{
   border-bottom: 1px solid #ccc;
@@ -134,3 +134,17 @@ tr .red {
     transform: rotate(360deg);
   }
 }
+
+label{
+  display: inline-block;
+  cursor: pointer;
+  position: relative;
+  padding-left: 18px;
+  margin-right: 14px;
+  font-size: 15px;
+}
+
+
+
+
+
