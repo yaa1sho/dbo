@@ -12,22 +12,30 @@ export function Content() {
     const [showExpenditure, setShowExpenditure] = React.useState(true);
 
     const onChangeDate = e => {
-        setShowDate(e.target.checked);
-    };
-    const onChangeType = e => {
-        setShowType(e.target.checked);
-    };
+        if (!(showTime || showType || showIncome || showExpenditure)) setShowDate(true);
+        else
+            setShowDate(e.target.checked);
+    }
     const onChangeTime = e => {
-        setShowTime(e.target.checked);
-    };
+        if (!(showType || showDate || showIncome || showExpenditure)) setShowTime(true);
+        else
+            setShowTime(e.target.checked);
+    }
+    const onChangeType = e => {
+        if (!(showTime || showDate || showIncome || showExpenditure)) setShowType(true);
+        else
+            setShowType(e.target.checked);
+    }
     const onChangeIncome = e => {
-        setShowIncome(e.target.checked);
-    };
+        if (!(showTime || showDate || showType ||showExpenditure)) setShowIncome(true);
+        else
+            setShowIncome(e.target.checked);
+    }
     const onChangeExpenditure = e => {
-        setShowExpenditure(e.target.checked);
-    };
-
-
+        if (!(showTime || showDate || showType || showExpenditure)) setShowExpenditure(true);
+        else
+            setShowExpenditure(e.target.checked);
+    }
 
     return (
         <div className="App-content">
@@ -50,7 +58,7 @@ export function Content() {
                 <label htmlFor="checkbox__text">Доход</label>
 
                 <input type="checkbox"
-                       onChange ={onChangeExpenditure} title={'Показать тип'} checked={showExpenditure}/>
+                       onChange ={onChangeExpenditure} title={'Показать расход'} checked={showExpenditure}/>
                 <label htmlFor="checkbox__text">Расход</label>
 
             </div>

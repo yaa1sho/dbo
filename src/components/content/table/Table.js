@@ -1,40 +1,47 @@
-import React from "react";
+import React, {Component} from "react";
 import {TableBase} from "./TableBase";
 import {myStatementData} from "../../../my-statement-data";
 
 
-
 export function Table([showDate,showTime,showType,showIncome,showExpenditure]) {
 
-    const [showNewType, setNewType] = React.useState(true);
+    const [group, setGroup] = React.useState(true);
 
-    const sortType = () => {
-        setNewType( myStatementData.sort(function (a,b) {
-            let typeA  = a.type.toLowerCase(), typeB = b.type.toLowerCase();
 
-            if(typeA < typeB) return -1;
-            if(typeA > typeB) return 1;
+    const onChangeGroup = e => {
+        switch (e.target.value) {
+            case "without grouping":
+                setGroup(e.target.value === true);
+            case "by date" :
+                setGroup(myStatementData.sort(function(a, b) {
+                  let dateA=new Date(a.date), dateB=new Date(b.date)
+                    return dateA-dateB
+                 }))
+                break;
+            case "by type" :
+                setGroup(myStatementData.sort(function (a,b) {
+                    let typeA  = a.type.toLowerCase(), typeB = b.type.toLowerCase();
 
-            return 0;
-        }));
-    }
+                    if(typeA < typeB) return -1;
+                    if(typeA > typeB) return 1;
 
-    const select = document.querySelector('select');
+                    return 0;
+                }))
+                break;
+            case "by income":
+                setGroup(myStatementData.sort(function (a,b) {
+                    return b.amount - a.amount;
+                }))
+                break;
 
-    select.addEventListener('change', function () {
-
-        switch (this.value) {
-
-            case 'по типу':
-            {sortType()} break;
-
-            default:
+            case "by expenditures":
+                setGroup(myStatementData.sort(function (a,b){
+                        return a.amount - b.amount;
+                    }
+                ))
+                break;
         }
-
-    })
-
-
-
+    }
 
 return (
     <>
@@ -58,12 +65,14 @@ return (
                 </tr>
         </table>
 
-        <select onChange = ''>
-            <option value = "без группировки"> без группировки </option>
-            <option value = "по дате"> по дате </option>
-            <option value = 'по типу'> по типу </option>
-            <option value = "по доходу"> по доходу </option>
-            <option value = "по расходу"> по рассходу </option>
+        <text>Группировать : </text>
+
+        <select value={group} onChange={ e => onChangeGroup(e)} >
+            <option value = "without grouping"> без группировки </option>
+            <option value = "by date"> по дате </option>
+            <option value = "by type"> по типу </option>
+            <option value = "by income"> по доходу </option>
+            <option value = "by expenditures"> по расходу </option>
         </select>
 
         {TableBase([showDate,showTime,showType,showIncome,showExpenditure])}
