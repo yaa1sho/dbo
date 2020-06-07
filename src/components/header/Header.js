@@ -1,7 +1,4 @@
 import React from 'react';
-import {Logo} from '../Logo';
-import {Paragraph} from './Paragraph';
-import {Anchor} from '../Anchor';
 
 export function Header() {
 

@@ -1,0 +1,86 @@
+
+.Full-table{
+    border-collapse: revert;
+    margin: 2px 4px 2px;
+}
+
+.For-base-table::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    border-radius: 5px;
+    background-color: #F5F5F5;
+}
+
+.For-base-table::-webkit-scrollbar
+{
+    width: 8px;
+    background-color: #F5F5F5;
+}
+
+.For-base-table::-webkit-scrollbar-thumb
+{
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #666699;
+}
+
+.Table-header{
+    max-width: 100%;
+    width: 800px;
+    text-align: center;
+}
+
+.Table-header, .Table-base {
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif, Serif;
+    font-size: 15px;
+    background: white;
+    border-collapse: collapse;
+}
+
+.Table-base{
+    max-width: 100%;
+    width: 800px ;
+    text-align: match-parent;
+}
+
+.For-base-table{
+    height: 370px;
+    overflow-y: auto;
+}
+th{
+    font-weight: normal;
+    color: #039;
+    border-bottom: 2px solid #6678b1;
+    padding: 2px 40px;
+    width: auto;
+}
+td{
+    border-bottom: 1px solid #ccc;
+    color: #669;
+    padding: 20px 40px;
+    transition: .3s linear;
+}
+
+tr .green {
+    color: green;
+}
+
+tr .red {
+    color: red;
+}
+
+.tr-groupTable{
+
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif, Serif;
+    font-size: 15px;
+    background: white;
+    border-collapse: collapse;
+    text-align: match-parent;
+}
+
+.tr-groupTable td {
+
+    border-bottom: 1px solid #ccc;
+    padding: 15px 100px;
+    transition: .3s linear;
+}

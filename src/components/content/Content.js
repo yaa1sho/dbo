@@ -1,69 +1,93 @@
 import React from 'react';
 import {Table} from "./table/Table";
-import {myStatementData} from "../../my-statement-data";
+import {Checkbox} from "./Checkbox";
+
+const initialState = {
+    showDate: true,
+    showTime: true,
+    showType: true,
+    showIncome: true,
+    showOutcome: true,
+};
+
 
 
 export function Content() {
 
-    const [showDate, setShowDate] = React.useState(true);
-    const [showType, setShowType] = React.useState(true);
-    const [showTime, setShowTime] = React.useState(true);
-    const [showIncome, setShowIncome] = React.useState(true);
-    const [showExpenditure, setShowExpenditure] = React.useState(true);
+    const [{showDate, showTime, showType, showIncome, showOutcome}, setCheckboxState] = React.useState(initialState);
+    const [selectedIndex, setSelectedIndex] = React.useState(0);
 
-    const onChangeDate = e => {
-        if (!(showTime || showType || showIncome || showExpenditure)) setShowDate(true);
-        else
-            setShowDate(e.target.checked);
+    const onChangeSelect = e => {
+        setSelectedIndex(e.target.selectedIndex);
     }
-    const onChangeTime = e => {
-        if (!(showType || showDate || showIncome || showExpenditure)) setShowTime(true);
-        else
-            setShowTime(e.target.checked);
-    }
-    const onChangeType = e => {
-        if (!(showTime || showDate || showIncome || showExpenditure)) setShowType(true);
-        else
-            setShowType(e.target.checked);
-    }
-    const onChangeIncome = e => {
-        if (!(showTime || showDate || showType ||showExpenditure)) setShowIncome(true);
-        else
-            setShowIncome(e.target.checked);
-    }
-    const onChangeExpenditure = e => {
-        if (!(showTime || showDate || showType || showExpenditure)) setShowExpenditure(true);
-        else
-            setShowExpenditure(e.target.checked);
-    }
+
+    const onChangeCheckbox = e => {
+        const attr = e.target.getAttribute('dataId');
+        const checked = e.target.checked;
+
+        setCheckboxState(prevState => {
+            const countChecked = Object.values(prevState).reduce((acc, el) => el ? acc + 1 : acc, 0);
+
+            if (countChecked === 1 && !checked)
+                return prevState;
+
+            return {
+                ...prevState,
+                [attr]: checked,
+            };
+        });
+    };
 
     return (
-        <div className="App-content">
-            <div className="checkbox">
+        <div className="App-content" onChange = {onChangeSelect}>
 
-                <input type="checkbox"
-                       onChange ={onChangeDate} title={'Показать дату'} checked={showDate} />
-                <label htmlFor="checkbox__text">Дата</label>
+           { (selectedIndex === 0) ?
+            <div className="checkbox-transform">
 
-                <input type="checkbox"
-                       onChange ={onChangeTime} title={'Показать время'} checked={showTime}/>
-                <label htmlFor="checkbox__text">Время</label>
+                <Checkbox
+                    checked={showDate}
+                    title={'Показать дату'}
+                    onChange={onChangeCheckbox}
+                    dataId={'showDate'}
+                />
 
-                <input type="checkbox"
-                       onChange ={onChangeType} title={'Показать тип'} checked={showType}/>
-                <label htmlFor="checkbox__text">Тип</label>
+                <Checkbox
+                    checked = {showTime}
+                    title = {'Показать время'}
+                    onChange = {onChangeCheckbox}
+                    dataId = {'showTime'}
+                />
 
-                <input type="checkbox"
-                       onChange ={onChangeIncome} title={'Показать доход'} checked={showIncome}/>
-                <label htmlFor="checkbox__text">Доход</label>
+               <Checkbox
+                    checked = {showType}
+                    title = {'Показать тип'}
+                    onChange = {onChangeCheckbox}
+                    dataId = {'showType'}
+                />
 
-                <input type="checkbox"
-                       onChange ={onChangeExpenditure} title={'Показать расход'} checked={showExpenditure}/>
-                <label htmlFor="checkbox__text">Расход</label>
+                <Checkbox
+                    checked = {showIncome}
+                    title = {'Показать доход'}
+                    onChange = {onChangeCheckbox}
+                    dataId = {'showIncome'}
+                />
 
-            </div>
+                <Checkbox
+                    checked = {showOutcome}
+                    title = {'Показать расход'}
+                    onChange = {onChangeCheckbox}
+                    dataId = {'showOutcome'}
+                />
 
-            {Table([showDate,showTime,showType,showIncome,showExpenditure])}
+            </div> : ''}
+
+            <Table
+                showDate = {showDate}
+                showTime = {showTime}
+                showType = {showType}
+                showIncome = {showIncome}
+                showOutcome = {showOutcome}
+            />
 
         </div>
     );
