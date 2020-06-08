@@ -1,7 +1,9 @@
 
 .Full-table{
     border-collapse: revert;
-    margin: 2px 4px 2px;
+    width: 100%;
+    height: 100%;
+
 }
 
 .For-base-table::-webkit-scrollbar-track

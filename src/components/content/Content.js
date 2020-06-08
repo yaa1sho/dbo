@@ -15,10 +15,10 @@ const initialState = {
 export function Content() {
 
     const [{showDate, showTime, showType, showIncome, showOutcome}, setCheckboxState] = React.useState(initialState);
-    const [selectedIndex, setSelectedIndex] = React.useState(0);
+    const [hideCheckbox, setHiddenCheckbox] = React.useState(0);
 
-    const onChangeSelect = e => {
-        setSelectedIndex(e.target.selectedIndex);
+    const onChangeCheck = e => {
+       setHiddenCheckbox(e.target.selectedIndex);
     }
 
     const onChangeCheckbox = e => {
@@ -39,10 +39,10 @@ export function Content() {
     };
 
     return (
-        <div className="App-content" onChange = {onChangeSelect}>
+        <div className="App-content" onChange = {onChangeCheck}>
 
-           { (selectedIndex === 0) ?
-            <div className="checkbox-transform">
+           { (hideCheckbox === 0) ?
+            <div className="checkbox-transform" >
 
                 <Checkbox
                     checked={showDate}
