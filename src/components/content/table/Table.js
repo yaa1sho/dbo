@@ -14,25 +14,26 @@ return (
     <>
         <div className = "Full-table">
         <table className="Table-header">
-                <tr>
-                {showDate && <th>
-                    Дата
-                </th>}
+            <tr>
+                {(selectedIndex === 0) ? showDate && <th> Дата </th>
+                :  <th> Год </th> }
+
                 { (selectedIndex === 0) ? showTime  && <th> Время </th>
                     : '' }
+
                 { (selectedIndex === 0) ?  showType  && <th> Тип </th>
                     : '' }
-                {showIncome && <th>
-                    Доход
-                </th>}
-                {showOutcome && <th>
-                    Расход
-                </th>}
-                </tr>
+
+                {(selectedIndex === 0) ? showIncome && <th> Доход </th>
+                :  <th> Доход </th> }
+
+                {(selectedIndex === 0) ? showOutcome && <th> Расход </th>
+                :  <th> Расход </th> }
+            </tr>
         </table>
 
         <div className="styled-select">
-            <select onChange = {onChangeSelect}>
+            <select  onChange = {onChangeSelect}>
                 <option value = "false"> без группировки </option>
                 <option value = "true"> по дате </option>
             </select>
@@ -44,10 +45,8 @@ return (
                 showTime = {showTime}
                 showType = {showType}
                 showIncome = {showIncome}
-                showOutcome = {showOutcome}
-            />)
-            :
-            (<GroupTable/>)
+                showOutcome = {showOutcome} />)
+            :  (<GroupTable/>)
         }
         </div>
     </>

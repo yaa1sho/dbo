@@ -34,7 +34,6 @@ export function GroupTable() {
             <table>
                 {groupedByYearData.sort((el1, el2) => el1.year - el2.year).map(({year, income, outcome}) => {
 
-
                     return (
                         <tr className = "tr-groupTable">
                             {<td>

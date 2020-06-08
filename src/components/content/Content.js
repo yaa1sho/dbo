@@ -41,7 +41,7 @@ export function Content() {
     return (
         <div className="App-content" onChange = {onChangeCheck}>
 
-           { (hideCheckbox === 0) ?
+           { (hideCheckbox === 1) ? '' :
             <div className="checkbox-transform" >
 
                 <Checkbox
@@ -79,7 +79,7 @@ export function Content() {
                     dataId = {'showOutcome'}
                 />
 
-            </div> : ''}
+            </div>}
 
             <Table
                 showDate = {showDate}
