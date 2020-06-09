@@ -67,7 +67,7 @@ export function Content() {
 
                 <Checkbox
                     checked = {showIncome}
-                    title = {'Показать доход'}
+                    title = {'Показать приход'}
                     onChange = {onChangeCheckbox}
                     dataId = {'showIncome'}
                 />

@@ -24,8 +24,8 @@ return (
                 { (selectedIndex === 0) ?  showType  && <th> Тип </th>
                     : '' }
 
-                {(selectedIndex === 0) ? showIncome && <th> Доход </th>
-                :  <th> Доход </th> }
+                {(selectedIndex === 0) ? showIncome && <th> Приход </th>
+                :  <th> Приход </th> }
 
                 {(selectedIndex === 0) ? showOutcome && <th> Расход </th>
                 :  <th> Расход </th> }

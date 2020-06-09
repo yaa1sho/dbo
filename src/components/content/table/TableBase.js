@@ -4,13 +4,14 @@ import React from "react";
 export function TableBase({showDate,showTime,showType,showIncome,showOutcome}) {
 
     const formatMonth = (month) => month < 10 ? '0' + month : month;
+    const formatTime = (time) => time < 10 ? '0' + time : time;
 
     return (
     <div className="For-base-table">
         <table className="Table-base">
             {myStatementData.map(el => {
 
-                const tableTime = new Date(el.date).getHours() + ':' + new Date(el.date).getMinutes() + ':' + new Date(el.date).getSeconds();
+                const tableTime =  formatTime(new Date(el.date).getHours()) + ':' + formatTime(new Date(el.date).getMinutes()) + ':' + formatTime(new Date(el.date).getSeconds());
                 const tableDate = new Date(el.date).getDate() + '.' + formatMonth(new Date(el.date).getMonth() + 1) + '.' + new Date(el.date).getFullYear();
                 return (
                     <tr>
@@ -24,10 +25,10 @@ export function TableBase({showDate,showTime,showType,showIncome,showOutcome}) {
                             {el.type}
                         </td>}
                         {showIncome && <td className={'green'}>
-                            {el.amount > 0 ? '+' + el.amount : ''}
+                            {el.amount > 0 ? el.amount : ''}
                         </td>}
                         {showOutcome && <td className={'red'}>
-                            {el.amount < 0 ? el.amount : ''}
+                            {el.amount < 0 ? -el.amount : ''}
                         </td>}
                     </tr>
                 )
